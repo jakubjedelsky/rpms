@@ -5,7 +5,7 @@
 
 Name:		asciinema
 Version:	0.9.7
-Release:	3%{?dist}
+Release:	4%{?dist}
 Summary:	Command line recorder for asciinema.org service
 
 Group:		Applications/Internet
@@ -57,6 +57,9 @@ nosetests tests/*_test.py
 
 
 %changelog
+* Tue Jan 28 2014 Jakub Jedelsky <jakub.jedelsky@gmail.com> - 0.9.7-7
+- Add support for EPEL6
+
 * Mon Jan 27 2014 Jakub Jedelsky <jakub.jedelsky@gmail.com> - 0.9.7-3
 - Add check of tests
 - Add build and common requires
@@ -64,7 +67,6 @@ nosetests tests/*_test.py
 
 * Mon Dec  2 2013 Jakub Jedelsky <jakub.jedelsky@gmail.com> - 0.9.7-2
 - A few spec file changes
-- Edit Summary
 
 * Mon Nov 25 2013 Jakub Jedelsky <jakub.jedelsky@gmail.com> - 0.9.7-1
 - Initial package
