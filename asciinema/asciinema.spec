@@ -4,8 +4,8 @@
 %endif
 
 Name:		asciinema
-Version:	0.9.7
-Release:	4%{?dist}
+Version:	0.9.8
+Release:	1%{?dist}
 Summary:	Command line recorder for asciinema.org service
 
 Group:		Applications/Internet
@@ -24,6 +24,7 @@ BuildRequires:	python-requests >= 1.1.0
 BuildRequires:	ncurses
 Requires:	python-requests >= 1.1.0
 Requires:	ncurses
+Requires:	python-setuptools
 
 
 %description
@@ -57,7 +58,13 @@ nosetests tests/*_test.py
 
 
 %changelog
-* Tue Jan 28 2014 Jakub Jedelsky <jakub.jedelsky@gmail.com> - 0.9.7-7
+* Tue Feb 11 2014 Jakub Jedelsky <jakub.jedelsky@gmail.com> - 0.9.8-1
+- update to version 0.9.8
+
+* Thu Feb  6 2014 Jakub Jedelsky <jakub.jedelsky@gmail.com> - 0.9.7-5
+- package python-setuptools is required
+
+* Tue Jan 28 2014 Jakub Jedelsky <jakub.jedelsky@gmail.com> - 0.9.7-4
 - Add support for EPEL6
 
 * Mon Jan 27 2014 Jakub Jedelsky <jakub.jedelsky@gmail.com> - 0.9.7-3
