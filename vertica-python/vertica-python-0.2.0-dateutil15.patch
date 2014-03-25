@@ -1,0 +1,11 @@
+--- vertica-python-0.2.0/vertica_python/vertica/column.py	2014-01-14 03:03:27.000000000 +0100
++++ vertica-python-0.2.0-new/vertica_python/vertica/column.py	2014-03-25 09:46:22.056816738 +0100
+@@ -5,6 +5,8 @@
+ from decimal import Decimal
+ from datetime import date
+ from datetime import datetime
++from pkg_resources import require
++require("python_dateutil>=1.5")
+ from dateutil import parser
+ 
+ import pytz

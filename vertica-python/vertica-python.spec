@@ -1,4 +1,4 @@
-%if 0%{fedora}
+%if 0%{?fedora}
 %global _with_python3 1
 %else
 %{!?__python2: %global __python2 /usr/bin/python2}
@@ -15,6 +15,8 @@ License:        MIT
 URL:            https://github.com/uber/vertica-python
 Source0:        https://github.com/uber/vertica-python/archive/%{version}.tar.gz
 Patch0:         vertica-python-0.2.0-python3.patch
+Patch1:         vertica-python-0.2.0-version.patch
+Patch2:         vertica-python-0.2.0-dateutil15.patch
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
@@ -22,15 +24,16 @@ BuildArch:      noarch
 BuildRequires:  python2-devel
 BuildRequires:  python-setuptools
 BuildRequires:  python-pip
-%if 0%{fedora}
-BuildRequires:  python-dateutil
-%else
-BuildRequires:  python-dateutil15
-%endif
-BuildRequires:  pytz
 
+%if 0%{?rhel} <= 6
+Requires:       python-dateutil15
+%else
 Requires:       python-dateutil
+%endif
+
+Requires:       python-setuptools
 Requires:       pytz
+Requires:       python-psycopg2
 
 %if 0%{?_with_python3}
 BuildRequires:  python3-devel
@@ -39,8 +42,10 @@ BuildRequires:  python3-pip
 BuildRequires:  python3-dateutil
 BuildRequires:  python3-pytz
 
+Requires:       python3-setuptools
 Requires:       python3-dateutil
 Requires:       python3-pytz
+Requires:       python3-psycopg2
 %endif
 
 
@@ -62,6 +67,11 @@ vertica-python3 is a native Python adapter for the Vertica
 %prep
 %setup -q -n vertica-python-%{version}
 %patch0 -p1
+%patch1 -p1
+
+%if 0%{?rhel} <= 6
+%patch2 -p1
+%endif
 
 %if 0%{?_with_python3}
 rm -rf %{py3dir}
