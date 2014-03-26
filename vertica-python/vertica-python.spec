@@ -7,7 +7,7 @@
 
 Name:           vertica-python
 Version:        0.2.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        A native Python adapter for the Vertica database
 
 Group:          Development/Languages
@@ -16,6 +16,7 @@ URL:            https://github.com/uber/vertica-python
 Source0:        https://github.com/uber/vertica-python/archive/%{version}.tar.gz
 Patch0:         vertica-python-0.2.0-python3.patch
 Patch1:         vertica-python-0.2.0-version.patch
+# EPEL 6 patch
 Patch2:         vertica-python-0.2.0-dateutil15.patch
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
@@ -27,11 +28,11 @@ BuildRequires:  python-pip
 
 %if 0%{?rhel} <= 6
 Requires:       python-dateutil15
+Requires:       python-setuptools
 %else
 Requires:       python-dateutil
 %endif
 
-Requires:       python-setuptools
 Requires:       pytz
 Requires:       python-psycopg2
 
@@ -42,7 +43,6 @@ BuildRequires:  python3-pip
 BuildRequires:  python3-dateutil
 BuildRequires:  python3-pytz
 
-Requires:       python3-setuptools
 Requires:       python3-dateutil
 Requires:       python3-pytz
 Requires:       python3-psycopg2
@@ -115,5 +115,8 @@ popd
 
 
 %changelog
+* Wed Mar 26 2014 Jakub Jedelsky <jakub.jedelsky@gmail.com> - 0.2.0-2
+- python-setuptools is required only on rhel<=6
+
 * Mon Mar 24 2014 Jakub Jedelsky <jakub.jedelsky@gmail.com> - 0.2.0-1
 - Initial package
