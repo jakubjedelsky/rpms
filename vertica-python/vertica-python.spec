@@ -3,7 +3,7 @@
 
 Name:           vertica-python
 Version:        0.2.0
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        A native Python adapter for the Vertica database
 
 Group:          Development/Languages
@@ -14,8 +14,6 @@ Patch0:         vertica-python-0.2.0-version.patch
 # EPEL 6 patch
 Patch1:         vertica-python-0.2.0-dateutil15.patch
 
-BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
-
 BuildArch:      noarch
 BuildRequires:  python2-devel
 BuildRequires:  python-setuptools
@@ -25,7 +23,7 @@ BuildRequires:  python-pip
 Requires:       python-dateutil15
 Requires:       python-setuptools
 %else
-Requires:       python-dateutil
+Requires:       python-dateutil >= 1.5
 %endif
 
 Requires:       pytz
@@ -62,6 +60,10 @@ vertica-python is a native Python adapter for the Vertica
 
 
 %changelog
+* Fri Mar 28 2014 Jakub Jedelsky <jakub.jedelsky@gmail.com> - 0.2.0-4
+- remove buildrood tag
+- edit dateutil patch for el6
+
 * Wed Mar 26 2014 Jakub Jedelsky <jakub.jedelsky@gmail.com> - 0.2.0-3
 - package is not ready for python3 
 

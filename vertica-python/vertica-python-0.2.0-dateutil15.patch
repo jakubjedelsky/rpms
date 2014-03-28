@@ -1,11 +1,16 @@
---- vertica-python-0.2.0/vertica_python/vertica/column.py	2014-01-14 03:03:27.000000000 +0100
-+++ vertica-python-0.2.0-new/vertica_python/vertica/column.py	2014-03-25 09:46:22.056816738 +0100
-@@ -5,6 +5,8 @@
+diff --git a/vertica_python/vertica/column.py b/vertica_python/vertica/column.py
+index 75d87a2..9eeef08 100644
+--- a/vertica_python/vertica/column.py
++++ b/vertica_python/vertica/column.py
+@@ -5,6 +5,11 @@ from collections import namedtuple
  from decimal import Decimal
  from datetime import date
  from datetime import datetime
-+from pkg_resources import require
-+require("python_dateutil>=1.5")
++from pkg_resources import require,VersionConflict
++try:
++	require("python_dateutil>=1.5")
++except VersionConflict:
++	pass
  from dateutil import parser
  
  import pytz
